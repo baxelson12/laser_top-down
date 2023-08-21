@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cmhr0e48yt8y1"]
+
+[node name="PlayerMovementController2D" type="Node2D"]

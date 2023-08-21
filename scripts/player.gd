@@ -5,39 +5,26 @@ signal fire(engaged: bool)
 @export var MAX_SPEED = 300
 @export var ACCELERATION = 1500
 @export var FRICTION = 1200
-@onready var axis = Vector2.ZERO
 
-func _physics_process(delta):
-	move(delta)
-	
-func get_input_axis():
-	axis = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	axis.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
-	axis.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
-	return axis.normalized()
+@onready var MOVEMENT_CONTROLLER: PlayerMovementController2D = $PlayerMovementController2D
 
-func apply_friction(amount):
-	if velocity.length() > amount:
-		velocity -= velocity.normalized() * amount
-	else:
-		velocity = Vector2.ZERO
-		
-func apply_movement(accel):
-	velocity += accel
-	velocity = velocity.limit_length(MAX_SPEED)
-	
-func move(delta):
-	monitor_firing_command()
-	axis = get_input_axis()
-	if axis == Vector2.ZERO:
-		apply_friction(FRICTION * delta)
-	else:
-		apply_movement(axis * ACCELERATION * delta)
-	
-	move_and_slide()
+signal spawned(position: Vector2)
+signal died(position: Vector2, xp: int)
+
+func _ready():
+	MOVEMENT_CONTROLLER.MAX_SPEED = MAX_SPEED
+	MOVEMENT_CONTROLLER.ACCELERATION = ACCELERATION
+	MOVEMENT_CONTROLLER.FRICTION = FRICTION
 
 func monitor_firing_command():
 	if Input.is_action_just_pressed('fire'):
 		emit_signal('fire', true)
 	elif Input.is_action_just_released('fire'):
 		emit_signal('fire', false)
+
+func _physics_process(delta):
+	monitor_firing_command()
+
+func _on_player_movement_controller_2d_apply_movement(movement):
+	velocity = movement
+	move_and_slide()
