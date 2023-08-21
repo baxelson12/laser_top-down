@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3otgjmvuau6s"]
+
+[ext_resource type="Script" path="res://scripts/wave_controller.gd" id="1_512o4"]
+
+[node name="WaveController" type="Node2D"]
+script = ExtResource("1_512o4")
+
+[node name="SpawnDelay" type="Timer" parent="."]
+
+[node name="WaveDelay" type="Timer" parent="."]
+
+[node name="LivingEnemies" type="Node2D" parent="."]
+
+[connection signal="timeout" from="SpawnDelay" to="." method="_spawn_enemy"]
+[connection signal="timeout" from="WaveDelay" to="." method="_start_wave"]

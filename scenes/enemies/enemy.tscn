@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://26tpenahv1ss"]
+
+[ext_resource type="Texture2D" uid="uid://ylwtfn1ux3ie" path="res://assets/sprites.png" id="1_6mgh4"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_jpxkn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h7v5f"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xpjpr"]
+radius = 8.0
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 7
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_jpxkn")
+MAX_HEALTH = 20.0
+SPEED = 250.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.815686, 0.4, 0.14902, 1)
+texture = ExtResource("1_6mgh4")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="LaserTarget" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserTarget"]
+shape = SubResource("CircleShape2D_h7v5f")
+debug_color = Color(0.960784, 0.027451, 0.486275, 0.419608)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xpjpr")
+
+[node name="DeathParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 10
+lifetime = 0.2
+randomness = 0.13
+emission_shape = 1
+emission_sphere_radius = 8.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+tangential_accel_max = 17.62
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+color = Color(0, 0, 0, 1)
+
+[node name="Pathfinding" type="Node2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Pathfinding"]
+path_desired_distance = 16.0
+target_desired_distance = 48.0
+path_max_distance = 32.0
+navigation_layers = 7
+avoidance_enabled = true
+radius = 16.0
+neighbor_distance = 100.0
+max_neighbors = 50
+time_horizon_agents = 0.2
+time_horizon_obstacles = 0.2
+avoidance_layers = 7
+avoidance_mask = 7
+
+[node name="NavigationTimer" type="Timer" parent="Pathfinding"]
+wait_time = 0.1
+autostart = true
+
+[connection signal="velocity_computed" from="Pathfinding/NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="Pathfinding/NavigationTimer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdusj1v4nxnvm"]
+
+[ext_resource type="Texture2D" uid="uid://bn57hpe1gny6y" path="res://assets/ring_texture.png" id="1_xfjwk"]
+[ext_resource type="Script" path="res://scripts/battery_bar.gd" id="2_owqxc"]
+
+[node name="BatteryBar" type="TextureProgressBar"]
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+value = 100.0
+fill_mode = 4
+texture_under = ExtResource("1_xfjwk")
+texture_progress = ExtResource("1_xfjwk")
+tint_under = Color(0.184314, 0.184314, 0.184314, 0.615686)
+tint_progress = Color(1, 0, 0, 0.803922)
+script = ExtResource("2_owqxc")
+metadata/_edit_use_anchors_ = true
