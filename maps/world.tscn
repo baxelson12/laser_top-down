@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6yuieylrh5r7"]
+[gd_scene load_steps=11 format=3 uid="uid://b6yuieylrh5r7"]
 
 [ext_resource type="Texture2D" uid="uid://cnj2oeh80nm2l" path="res://assets/Tiles.png" id="1_8qd2n"]
 [ext_resource type="PackedScene" uid="uid://puaoqjx2fbjt" path="res://scenes/player.tscn" id="2_5kb8o"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dpipvdxq5iynw" path="res://scenes/orbiter.tscn" id="4_4aewy"]
 [ext_resource type="PackedScene" uid="uid://b4sk2er2b1oj2" path="res://scenes/defender.tscn" id="5_uhlrs"]
 [ext_resource type="PackedScene" uid="uid://d3otgjmvuau6s" path="res://scenes/wave_controller.tscn" id="6_5pw5e"]
+[ext_resource type="Script" path="res://scripts/GameController.gd" id="7_x6heb"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ovbi5"]
 vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -107,3 +108,9 @@ position = Vector2(36, 348)
 
 [node name="Marker2D15" type="Marker2D" parent="WaveController/SpawnPoints"]
 position = Vector2(280, 173)
+
+[node name="GameController" type="Node" parent="." node_paths=PackedStringArray("WAVE_CONTROLLER")]
+script = ExtResource("7_x6heb")
+WAVE_CONTROLLER = NodePath("../WaveController")
+
+[connection signal="died" from="Player" to="GameController" method="_on_player_died"]
