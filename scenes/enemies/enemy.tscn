@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://26tpenahv1ss"]
+[gd_scene load_steps=6 format=3 uid="uid://26tpenahv1ss"]
 
 [ext_resource type="Texture2D" uid="uid://ylwtfn1ux3ie" path="res://assets/sprites.png" id="1_6mgh4"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_jpxkn"]
+[ext_resource type="PackedScene" uid="uid://qaftyieojcgj" path="res://scenes/melee_attack.tscn" id="3_6byi1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h7v5f"]
 radius = 7.0
@@ -17,6 +18,7 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_jpxkn")
 MAX_HEALTH = 20.0
 SPEED = 250.0
+DAMAGE = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.815686, 0.4, 0.14902, 1)
@@ -71,6 +73,8 @@ avoidance_mask = 7
 [node name="NavigationTimer" type="Timer" parent="Pathfinding"]
 wait_time = 0.1
 autostart = true
+
+[node name="MeleeAttack" parent="." instance=ExtResource("3_6byi1")]
 
 [connection signal="velocity_computed" from="Pathfinding/NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="Pathfinding/NavigationTimer" to="." method="_on_timer_timeout"]

@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var XP_VALUE: int
 
 @onready var NAV_AGENT: NavigationAgent2D = $Pathfinding/NavigationAgent2D
+@onready var MELEE_ATTACK: Area2D = $MeleeAttack
 
 signal spawned(position: Vector2)
 signal died(position: Vector2, xp: int)
@@ -15,12 +16,14 @@ var health: float
 
 func _ready():
 	health = MAX_HEALTH
+	MELEE_ATTACK.ATTACK_VALUE = DAMAGE
 	NAV_AGENT.max_speed = SPEED
 	_make_path()
 	emit_signal("spawned", global_position)
 
 func _make_path() -> void:
-	NAV_AGENT.target_position = PLAYER.global_position
+	if !PLAYER: NAV_AGENT.target_position = global_position
+	else: NAV_AGENT.target_position = PLAYER.global_position
 
 func on_hit(damage: float):
 	health -= damage

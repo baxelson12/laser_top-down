@@ -57,6 +57,7 @@ func _start_wave() -> void:
 	print("Wave {0} started".format([current_wave], "{_}"))
 
 func _spawn_enemy() -> void:
+	if !get_tree().get_nodes_in_group("player")[0]: return
 	var enemy = enemies[randi() % enemies.size()]
 	var spawn_pos = spawn_points[randi() % spawn_points.size()].global_position
 	var instance = enemy.instantiate()
@@ -70,7 +71,10 @@ func _spawn_enemy() -> void:
 		print("End of wave spawning")
 		SpawnDelay.stop()
 		WaveDelay.start()
-	
+
+func stop_all() -> void:
+	SpawnDelay.stop()
+	WaveDelay.stop()
 
 func _ready() -> void:
 	assert(has_node("SpawnPoints"), "To use this scene, a SpawnPoints node must be added as a child with Marker2D's spawn positions")
