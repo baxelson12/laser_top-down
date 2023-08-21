@@ -1,43 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cq4ns76usrr1n"]
+[gd_scene load_steps=4 format=3 uid="uid://cq4ns76usrr1n"]
 
 [ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_s2n4l"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ujn7"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkofi"]
-bg_color = Color(0.466667, 0.466667, 0.466667, 1)
-border_width_left = 1
-border_width_bottom = 2
-border_color = Color(0.321569, 0.321569, 0.321569, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yiw4i"]
-bg_color = Color(0.423529, 0.423529, 0.423529, 1)
-border_width_left = 1
-border_width_bottom = 2
-border_color = Color(0.321569, 0.321569, 0.321569, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u75xr"]
-border_width_left = 1
-border_width_bottom = 2
-border_color = Color(0.6, 0.6, 0.6, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="Theme" id="Theme_rf14x"]
-Button/styles/focus = SubResource("StyleBoxEmpty_1ujn7")
-Button/styles/hover = SubResource("StyleBoxFlat_tkofi")
-Button/styles/normal = SubResource("StyleBoxFlat_yiw4i")
-Button/styles/pressed = SubResource("StyleBoxFlat_u75xr")
+[ext_resource type="Theme" uid="uid://dvkoq153yq422" path="res://assets/theme.tres" id="2_s0kb4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqunl"]
 bg_color = Color(0.266667, 0.266667, 0.266667, 1)
@@ -51,7 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_rf14x")
+theme = ExtResource("2_s0kb4")
 theme_override_styles/panel = SubResource("StyleBoxFlat_fqunl")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
