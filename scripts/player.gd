@@ -19,6 +19,7 @@ func _ready():
 	MOVEMENT_CONTROLLER.MAX_SPEED = MAX_SPEED
 	MOVEMENT_CONTROLLER.ACCELERATION = ACCELERATION
 	MOVEMENT_CONTROLLER.FRICTION = FRICTION
+	emit_signal("spawned", global_position)
 
 func _monitor_firing_command():
 	if Input.is_action_just_pressed('fire'):
