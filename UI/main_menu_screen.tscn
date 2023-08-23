@@ -43,6 +43,7 @@ Button/styles/pressed = SubResource("StyleBoxFlat_u75xr")
 bg_color = Color(0.266667, 0.266667, 0.266667, 1)
 
 [node name="MainMenuScreen" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_ge4mk")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]

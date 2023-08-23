@@ -109,8 +109,10 @@ position = Vector2(36, 348)
 [node name="Marker2D15" type="Marker2D" parent="WaveController/SpawnPoints"]
 position = Vector2(280, 173)
 
-[node name="GameController" type="Node" parent="." node_paths=PackedStringArray("WAVE_CONTROLLER")]
+[node name="GameController" type="Node" parent="." node_paths=PackedStringArray("WAVE_CONTROLLER", "ACTIVE_CAMERA")]
+process_mode = 3
 script = ExtResource("7_x6heb")
 WAVE_CONTROLLER = NodePath("../WaveController")
+ACTIVE_CAMERA = NodePath("../Player/FollowerCamera2D")
 
 [connection signal="died" from="Player" to="GameController" method="_on_player_died"]
