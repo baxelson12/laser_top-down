@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6yuieylrh5r7"]
+[gd_scene load_steps=12 format=3 uid="uid://b6yuieylrh5r7"]
 
 [ext_resource type="Texture2D" uid="uid://cnj2oeh80nm2l" path="res://assets/Tiles.png" id="1_8qd2n"]
 [ext_resource type="PackedScene" uid="uid://puaoqjx2fbjt" path="res://scenes/player.tscn" id="2_5kb8o"]
 [ext_resource type="PackedScene" uid="uid://dfg5jiyhuwrlo" path="res://scenes/follower_camera_2d.tscn" id="3_n7msn"]
+[ext_resource type="PackedScene" uid="uid://c2im2gfkcn15a" path="res://UI/hud.tscn" id="4_0lk38"]
 [ext_resource type="PackedScene" uid="uid://dpipvdxq5iynw" path="res://scenes/orbiter.tscn" id="4_4aewy"]
 [ext_resource type="PackedScene" uid="uid://b4sk2er2b1oj2" path="res://scenes/defender.tscn" id="5_uhlrs"]
 [ext_resource type="PackedScene" uid="uid://d3otgjmvuau6s" path="res://scenes/wave_controller.tscn" id="6_5pw5e"]
@@ -43,6 +44,8 @@ position = Vector2(397, 311)
 [node name="FollowerCamera2D" parent="Player" node_paths=PackedStringArray("TILEMAP") instance=ExtResource("3_n7msn")]
 zoom = Vector2(2, 2)
 TILEMAP = NodePath("../../TileMap")
+
+[node name="HUD" parent="Player/FollowerCamera2D" instance=ExtResource("4_0lk38")]
 
 [node name="Orbiter" parent="Player" instance=ExtResource("4_4aewy")]
 rotation = -6.28319

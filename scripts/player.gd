@@ -13,6 +13,7 @@ var current_health: float
 
 signal spawned(position: Vector2)
 signal died(position: Vector2, xp: int)
+signal health_update(next_health: float)
 
 func _ready():
 	current_health = STARTING_HEALTH
@@ -29,6 +30,7 @@ func _monitor_firing_command():
 
 func on_hit(damage: float):
 	current_health -= damage
+	emit_signal("health_update", clamp(0, 100, current_health))
 
 func kill() -> void:
 	$DeathParticles.emitting = true
