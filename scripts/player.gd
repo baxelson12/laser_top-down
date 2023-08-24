@@ -29,7 +29,6 @@ func _monitor_firing_command():
 
 func on_hit(damage: float):
 	current_health -= damage
-	print("Player health: ", current_health)
 
 func kill() -> void:
 	$DeathParticles.emitting = true

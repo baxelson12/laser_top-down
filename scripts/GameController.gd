@@ -15,7 +15,6 @@ func _on_player_died(position, xp):
 
 func _process(delta):
 	if Input.is_action_just_pressed("pause") and !get_tree().paused:
-		print("Pausing...")
 		var pause = PAUSE_SCENE.instantiate()
 		ACTIVE_CAMERA.add_child(pause)
 		pause_node = pause
@@ -26,5 +25,4 @@ func _process(delta):
 		pause_node.queue_free()
 		pause_node = null
 		get_tree().paused = false
-		print("Unpause ", get_tree().paused)
 		return
