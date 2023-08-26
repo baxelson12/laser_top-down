@@ -54,11 +54,12 @@ ORBITAL_RADIUS = 50.0
 
 [node name="Defender" parent="Player/Orbiter" node_paths=PackedStringArray("PLAYER") instance=ExtResource("5_uhlrs")]
 PLAYER = NodePath("../..")
+BATTERY_DECAY_RATE = 25.0
 TARGET_RANGE_RADIUS = 50.0
 
 [node name="WaveController" parent="." instance=ExtResource("6_5pw5e")]
 ENEMY_SCENES_DIR = "res://scenes/enemies"
-STARTING_SPAWN_AMOUNT = 20
+STARTING_SPAWN_AMOUNT = 100
 SPAWN_DELAY_TIME = 0.5
 WAVE_DELAY_TIME = 30.0
 SPAWN_AMOUNT_MULTIPLIER = 1.1
