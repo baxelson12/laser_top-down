@@ -8,6 +8,7 @@ extends CharacterBody2D
 
 @onready var NAV_AGENT: NavigationAgent2D = $Pathfinding/NavigationAgent2D
 @onready var MELEE_ATTACK: Area2D = $MeleeAttack
+@onready var ANIMATION_PLAYER: AnimationPlayer = $Sprite2D/AnimationPlayer
 
 signal spawned(position: Vector2)
 signal died(position: Vector2, xp: int)
@@ -27,6 +28,8 @@ func _make_path() -> void:
 
 func on_hit(damage: float):
 	health -= damage
+	ANIMATION_PLAYER.play("damage_flash")
+	
 
 func kill() -> void:
 	$DeathParticles.emitting = true

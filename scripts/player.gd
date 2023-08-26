@@ -8,6 +8,7 @@ signal fire(engaged: bool)
 @export var STARTING_HEALTH: float = 100
 
 @onready var MOVEMENT_CONTROLLER: PlayerMovementController2D = $PlayerMovementController2D
+@onready var ANIMATION_PLAYER: AnimationPlayer = $Sprite2D/AnimationPlayer
 
 var current_health: float
 
@@ -31,6 +32,7 @@ func _monitor_firing_command():
 func on_hit(damage: float):
 	current_health -= damage
 	emit_signal("health_update", clamp(0, 100, current_health))
+	ANIMATION_PLAYER.play("damage_flash")
 
 func kill() -> void:
 	$DeathParticles.emitting = true
