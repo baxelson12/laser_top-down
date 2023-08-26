@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dfg5jiyhuwrlo"]
 
-[ext_resource type="Script" path="res://scripts/FollowerCamera2D.gd" id="1_u6yno"]
+[ext_resource type="Script" path="res://common/2d/follower-camera/follower_camera_2d.gd" id="1_u6yno"]
 
 [node name="FollowerCamera2D" type="Camera2D"]
 position_smoothing_enabled = true
