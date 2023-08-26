@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bkyhfl132m6gr"]
 
-[ext_resource type="Script" path="res://PauseScreen.gd" id="1_w4luk"]
+[ext_resource type="Script" path="res://scripts/PauseScreen.gd" id="1_eqkxb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5tfsq"]
 bg_color = Color(0, 0, 0, 0.509804)
@@ -20,7 +20,7 @@ shadow_offset = Vector2(-2, 3)
 
 [node name="PauseScreen" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("1_w4luk")
+script = ExtResource("1_eqkxb")
 
 [node name="Backdrop" type="Panel" parent="."]
 anchors_preset = 15
