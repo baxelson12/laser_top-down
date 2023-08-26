@@ -4,10 +4,11 @@
 [ext_resource type="Script" path="res://scripts/battery_bar.gd" id="2_owqxc"]
 
 [node name="BatteryBar" type="TextureProgressBar"]
-offset_left = -256.0
-offset_top = -256.0
-offset_right = 256.0
-offset_bottom = 256.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 384.0
+offset_bottom = 384.0
+scale = Vector2(0.5, 0.5)
 value = 100.0
 fill_mode = 4
 texture_under = ExtResource("1_xfjwk")

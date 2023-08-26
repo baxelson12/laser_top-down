@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://b4sk2er2b1oj2"]
 
-[ext_resource type="Texture2D" uid="uid://ylwtfn1ux3ie" path="res://assets/sprites.png" id="1_ca3u8"]
 [ext_resource type="Script" path="res://scripts/defender.gd" id="1_x1ktr"]
 [ext_resource type="Script" path="res://scripts/TargetRange.gd" id="2_6qcmw"]
+[ext_resource type="Texture2D" uid="uid://bn61me73osq3d" path="res://assets/defender.png" id="2_7hw22"]
 [ext_resource type="PackedScene" uid="uid://bdusj1v4nxnvm" path="res://scenes/battery_bar.tscn" id="4_4ry78"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0q7fd"]
@@ -18,8 +18,7 @@ script = ExtResource("1_x1ktr")
 BATTERY_DECAY_RATE = 50.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ca3u8")
-region_enabled = true
+texture = ExtResource("2_7hw22")
 region_rect = Rect2(64, 16, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -38,8 +37,15 @@ debug_color = Color(0.792157, 0.388235, 0.470588, 0.419608)
 [node name="Lasers" type="Node2D" parent="."]
 
 [node name="BatteryBar" parent="." instance=ExtResource("4_4ry78")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -13.0
 offset_top = -13.0
 offset_right = 499.0
 offset_bottom = 499.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.05, 0.05)
